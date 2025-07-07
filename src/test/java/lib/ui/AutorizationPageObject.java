@@ -1,5 +1,6 @@
 package lib.ui;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class AutorizationPageObject extends MainPageObject{
@@ -14,6 +15,7 @@ public class AutorizationPageObject extends MainPageObject{
         super(driver);
     }
 
+    @Step("Авторизация в Вики (метод не работает для Android)")
     public void clickAuthButton(){
         this.waitForElementPresent(MAIN_MENU, "Не найдена кнопка меню", 5);
         this.waitForElementAndClick(MAIN_MENU, "Не найдена кнопка меню для клика", 5);
@@ -22,11 +24,13 @@ public class AutorizationPageObject extends MainPageObject{
         this.waitForElementAndClick(LOGIN_BUTTON, "Не найдена кнопка авторизации для клика", 5);
     }
 
+    @Step("Ввод логина '{login}' и пароля '{password}'")
     public void enterLoginData(String login, String password){
         this.waitForElementAndSendKeys(LOGIN_INPUT, "welcome2svetlana","Не найдено поле для ввода логина", 5);
         this.waitForElementAndSendKeys(PASSWORD_INPUT, "svetlana2welcome","Не найдено поле для ввода пароля",5);
     }
 
+    @Step("Подтверждение авторизации")
     public void submiitForm(){
         this.waitForElementAndClick(SUBMIT_BUTTON, "Не найдена кнопка подтверждения ввода пароля/логина", 5);
     }

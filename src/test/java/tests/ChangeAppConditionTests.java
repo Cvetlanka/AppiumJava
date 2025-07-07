@@ -1,16 +1,25 @@
 package tests;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Step;
+import io.qameta.allure.junit4.DisplayName;
 import lib.CoreTestCase;
 import lib.Platform;
 import lib.ui.ArticlePageObject;
 import lib.ui.SearchPageObject;
 import lib.ui.factories.ArticlePageObjectFactory;
 import lib.ui.factories.SearchPageObjectFactory;
+import org.junit.Assert;
 import org.junit.Test;
 
+@Epic("Тесты для проверки работы с экраном приложения")
 public class ChangeAppConditionTests extends CoreTestCase {
 
     @Test // Седьмой тест из обучающего урока
+    @DisplayName("Проверка выхода статьи из режима background")
+    @Description("Ищем статью со слово 'Sport' в заголовке, проверяем заголовок после выхода приложения из режима background")
+    @Step("Стартуем testCheckSearchArticleInBackground...")
     public void testCheckSearchArticleInBackground() {
 
         if(Platform.getInstance().IsMW()){
@@ -31,6 +40,9 @@ public class ChangeAppConditionTests extends CoreTestCase {
     }
 
     @Test // // Тест для ДОМАШНЕГО ЗАДАНИЯ (Ex7*: Поворот экрана)
+    @DisplayName("Проверка поворотов экрана")
+    @Description("Ищем статью со словом 'Sport' в заголовке, проверяем заголовок после двойного поворота экрана")
+    @Step("Стартуем testChangeScreenOrientationOnScreenResults_Ex7...")
     public void testChangeScreenOrientationOnScreenResults_Ex7(){
 
         if(Platform.getInstance().IsMW()){
@@ -51,7 +63,7 @@ public class ChangeAppConditionTests extends CoreTestCase {
         this.rotateScreenLandscape();
 
         String title_after_rotation = ArticlePageObject.getArticleTitle();
-        assertEquals(
+        Assert.assertEquals(
                 "Заголовок статьи изменился после первого поворота экрана!\n Был '" + title_before_rotation + "'.\n Стал '" + title_after_rotation + "'.",
                 title_before_rotation,
                 title_after_rotation
@@ -60,7 +72,7 @@ public class ChangeAppConditionTests extends CoreTestCase {
         this.rotateScreenPortrait();
 
         String title_after_second_rotation = ArticlePageObject.getArticleTitle();
-        assertEquals(
+        Assert.assertEquals(
                 "Заголовок статьи изменился после второго поворота экрана!\n Был '" + title_before_rotation + "'.\n Стал '" + title_after_second_rotation + "'.",
                 title_before_rotation,
                 title_after_second_rotation

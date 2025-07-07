@@ -1,5 +1,9 @@
 package tests;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Step;
+import io.qameta.allure.junit4.DisplayName;
 import lib.CoreTestCase;
 import lib.Platform;
 import lib.ui.ArticlePageObject;
@@ -12,9 +16,13 @@ import lib.ui.factories.NavigationUIFactory;
 import lib.ui.factories.SearchPageObjectFactory;
 import org.junit.Test;
 
+@Epic("Тесты для проверки работы со списками для сохранения статей")
 public class MyListsTests extends CoreTestCase {
 
     @Test // // Тест для ДОМАШНЕГО ЗАДАНИЯ (Ex5: Тест: Сохранение двух статей)
+    @DisplayName("Проверка сохранения двух статей в избранное")
+    @Description("Находим статью со словом поиска 'Sport'; создаем новый список 'My List of Sport'; находим и добавляем в него две статьи 'Sporting CP' и 'Sport of athletics'; первую удаляем; проверяем заголовок второй, оставшейся в списке")
+    @Step("Стартуем testSaveArticleToMyListAndDeleteFirstArticle_Ex5...")
     public void testSaveArticleToMyListAndDeleteFirstArticle_Ex5() {
 
         String search_line = "Sport";

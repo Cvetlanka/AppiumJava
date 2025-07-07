@@ -15,8 +15,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.regex.Pattern;
 
-//import static jdk.internal.org.jline.utils.Colors.s;
-
 public class MainPageObject {
     protected RemoteWebDriver driver;
 
